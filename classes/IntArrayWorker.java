@@ -78,6 +78,32 @@ public class IntArrayWorker
     System.out.println();
   }
   
+  public int getCount(int test){
+      int num = 0;
+      for(int row = 0; row < matrix.length; row++){
+        
+          for(int col = 0; col < matrix[0].length; col++){
+          
+          if(matrix[row][col] == test){
+            num++;
+          }
+          
+        }
+        
+      }
+      return num;
+  }
+  
+  
+   public int getLargest() {
+        int largest = matrix[0][0];
+          for(int row = 0; row < matrix.length; row++){
+              for(int col = 0; col < matrix[0].length; col++){
+                  largest = Math.max(largest,matrix[row][col]);
+            }
+        }
+        return largest;
+   }
   
   /** 
    * fill the array with a pattern
