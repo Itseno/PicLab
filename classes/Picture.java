@@ -60,6 +60,21 @@ public class Picture extends SimplePicture
     super(copyPicture);
   }
   
+  public void keepOnlyBlue()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for ( Pixel[] rowArray : pixels )
+        {
+            for ( Pixel pixelObj : rowArray )
+            {
+                pixelObj.setRed( 0 );
+                pixelObj.setGreen( 0 );
+            }
+        }
+    }
+  
+    
+    
   /**
    * Constructor that takes a buffered image
    * @param image the buffered image to use
@@ -217,16 +232,54 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void negate() {
+        Pixel[][] pixels = this.getPixels2D();
+        for ( Pixel[] rowArray : pixels ){
+            for ( Pixel square : rowArray ){
+                square.setGreen( 255 - square.getGreen());
+                square.setRed( 255 - square.getRed() );
+                square.setBlue( 255 - square.getBlue());
+            }
+        }
+    }
+
+  public void grayscale()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for ( Pixel[] rowArray : pixels ){
+            for ( Pixel square : rowArray ){
+                int mean = (int)((square.getRed() + square.getGreen() + square.getBlue()) / 3);
+                square.setRed(mean);
+                square.setBlue(mean);
+                square.setGreen(mean);
+            }
+        }
+    }
+    
+  public void fixUnderwater()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        
+        Pixel pixel = null;
+        for ( int row = 0; row < pixels.length; row++ )
+        {
+            for ( int col = 0; col < pixels[0].length; col++ )
+            {
+                pixel = pixels[row][col];
+                pixel.setRed( pixel.getRed() * 4 );
+            }
+        }
+    }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+    Picture koala = new Picture("koala.jpg");
+    koala.explore();
+    koala.zeroBlue();
+    koala.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

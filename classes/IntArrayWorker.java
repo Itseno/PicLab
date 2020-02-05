@@ -104,6 +104,16 @@ public class IntArrayWorker
         }
         return largest;
    }
+   
+   public int getColTotal(int input){
+      int total = 0;
+      
+      for (int[] row : matrix){
+          total += row[input];
+      }
+      
+      return total;
+  }
   
   /** 
    * fill the array with a pattern
