@@ -26,6 +26,44 @@ public class PictureTester
     caterpillar.explore();
   }
   
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture koala = new Picture("koala.jpg");
+    koala.mirrorVerticalRightToLeft();
+    koala.explore();
+  }
+  
+  public static void testMirrorHorizontal(){
+    Picture moon = new Picture("moon-surface.jpg");
+    moon.mirrorHorizontal();
+    moon.explore();
+  }
+  
+  public static void testMirrorHorizontalBotToTop(){
+    Picture moon = new Picture("moon-surface.jpg");
+    moon.mirrorHorizontalBotToTop();
+    moon.explore();
+  }
+  
+  public static void testMirrorDiagonal()
+  {
+    Picture wall = new Picture("wall.jpg");
+    wall.mirrorDiagonal();
+    wall.explore();
+  }
+  
+  public static void testMirrorArms(){
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+  
+  public static void testMirrorGull(){
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.mirrorGull();
+    seagull.explore();
+  }
+  
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -51,16 +89,37 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testEdgeDetectionTWO()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetectionTWO(100);
+    swan.explore();
+  }
+  
   public static void testKeepOnlyBlue(){
-        Picture koala = new Picture( "koala.jpg" );
-        koala.keepOnlyBlue();
-        koala.explore();
-    }
+    Picture koala = new Picture( "koala.jpg" );
+    koala.keepOnlyBlue();
+    koala.explore();
+  }
   
   public static void testNegate(){
     Picture koala = new Picture( "koala.jpg" );
     koala.negate();
     koala.explore();
+  }
+  
+  public static void testCopy() {
+        Picture flower = new Picture("flower1.jpg");
+        flower.explore();
+        flower.copy(flower, 0, 50);
+        flower.explore();
+    }
+  
+  public static void testCopyTWO(){
+    Picture kitten = new Picture("kitten2.jpg");
+    kitten.explore();
+    kitten.copyTWO(kitten,9,30,58,14);
+    kitten.explore();
   }
   
   public static void testGrayscale(){
@@ -75,14 +134,17 @@ public class PictureTester
         water.fixUnderwater();
         water.explore();
     }
-    
+  
+  public static void testMyCollage() {
+        Picture canvas = new Picture(225 * 4, 224 * 4);
+        canvas.myCollage();
+        canvas.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
     testZeroBlue();
     testKeepOnlyBlue();
     //testKeepOnlyRed();
@@ -91,14 +153,19 @@ public class PictureTester
     testGrayscale();
     testFixUnderwater();
     testMirrorVertical();
+    testMirrorVerticalRightToLeft();
     testMirrorTemple();
-    //testMirrorArms();
-    //testMirrorGull();
-    //testMirrorDiagonal();
+    testMirrorHorizontal();
+    testMirrorHorizontalBotToTop();
+    testMirrorDiagonal();
+    testMirrorArms();
+    testMirrorGull();
     testCollage();
-    //testCopy();
+    testMyCollage();
+    testCopy();
+    testCopyTWO();
     testEdgeDetection();
-    //testEdgeDetection2();
+    testEdgeDetectionTWO();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
